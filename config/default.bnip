@@ -17,8 +17,8 @@
 //================= Unique Charms ================
 //------------------------------------------------
 
-[Name] == Grandcharm && [Quality] == Unique     // Gheed's Fortune
-[Name] == Smallcharm && [Quality] == Unique     // Annihilus Charm
+// [Name] == Grandcharm && [Quality] == Unique     // Gheed's Fortune
+// [Name] == Smallcharm && [Quality] == Unique     // Annihilus Charm
 
 //------------------------------------------
 //================= Potions ================

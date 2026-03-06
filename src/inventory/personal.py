@@ -203,10 +203,11 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
     img = open(inp_img)
     vendor_open = is_visible(ScreenObjects.GoldBtnVendor, inp_img)
     slots = []
-    wait(0.2, 0.3)
-    keyboard.send("enter")
-    wait(0.2, 0.3)
-    keyboard.send("enter")
+    # wait(0.2, 0.3)
+    # keyboard.send("enter")
+    # wait(0.2, 0.3)
+    # keyboard.send("enter")
+    # wait(0.2, 0.3)
     # check which slots have items
     for column, row in itertools.product(range(Config().char["num_loot_columns"]), range(4)):
         slot_pos, slot_img = common.get_slot_pos_and_img(img, column, row)

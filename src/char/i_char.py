@@ -120,11 +120,11 @@ class IChar:
             if template_match.valid:
                 Logger.debug(f"Select {template_match.name} ({template_match.score*100:.1f}% confidence)")
                 mouse.move(*template_match.center_monitor)
-                wait(0.5, 0.6)
-                keyboard.send("enter")
-                wait(0.5, 0.6)
-                keyboard.send("enter")
-                wait(0.5, 0.6)
+                # wait(0.2, 0.3)
+                # keyboard.send("enter")
+                # wait(0.2, 0.3)
+                # keyboard.send("enter")
+                # wait(0.2, 0.3)
                 mouse.click(button="left")
                 # check the successfunction for 2 sec, if not found, try again
                 check_success_start = time.time()

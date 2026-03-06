@@ -15,6 +15,11 @@ import os
 
 def open(img: np.ndarray = None) -> np.ndarray:
     img = grab() if img is None else img
+    wait(0.2, 0.3)
+    keyboard.send("enter")
+    wait(0.2, 0.3)
+    keyboard.send("enter")
+    wait(0.2, 0.3)
     if is_visible(ScreenObjects.BeltExpandable, img) and Config().char["belt_rows"] > 1:
         keyboard.send(Config().char["show_belt"])
         if not wait_until_hidden(ScreenObjects.BeltExpandable, 1):
