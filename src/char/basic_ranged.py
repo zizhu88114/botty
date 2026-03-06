@@ -61,7 +61,7 @@ class Basic_Ranged(IChar):
 
     def kill_pindle(self) -> bool:
         pindle_pos_abs = convert_screen_to_abs(Config().path["pindle_end"][0])
-        cast_pos_abs = [pindle_pos_abs[0] * 0.9, pindle_pos_abs[1] * 0.9]
+        cast_pos_abs = [pindle_pos_abs[0] * 0.8, pindle_pos_abs[1] * 0.8]
         start = time.time()
         keyboard.send(Config().char["stand_still"], do_release=False)
         while (time.time() - start) < Config().char["atk_len_pindle"]:

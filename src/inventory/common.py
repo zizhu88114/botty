@@ -119,6 +119,11 @@ def tome_state(img: np.ndarray = None, tome_type: str = "tp", roi: list = None):
     return state, position
 
 def id_item_with_tome(item_location: list, id_tome_location: list):
+    wait(0.5, 0.6)
+    keyboard.send("enter")
+    wait(0.5, 0.6)
+    keyboard.send("enter")
+    wait(0.5, 0.6)
     mouse.move(id_tome_location[0], id_tome_location[1], randomize=4, delay_factor=[0.4, 0.8])
     wait(0.2, 0.4)
     mouse.click(button="right")

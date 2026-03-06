@@ -78,7 +78,8 @@ def grab(force_new: bool = False) -> np.ndarray:
     else:
         with cached_img_lock:
             last_grab = time.perf_counter()
-        img = np.array(sct.grab(monitor_roi))
+        with mss() as sct_0:
+            img = np.array(sct_0.grab(monitor_roi))
         with cached_img_lock:
             cached_img = img[:, :, :3]
         return cached_img

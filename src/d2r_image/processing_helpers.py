@@ -132,6 +132,7 @@ def crop_item_tooltip(image: np.ndarray, model: str = "hover-eng_inconsolata_inv
         found_footer = template_finder.search(["TO_TOOLTIP"], image, threshold=0.8, roi=[x, footer_y, w, footer_h]).valid
         if found_footer:
             res.ocr_result = image_to_text(cropped_item, psm=6, model=model)[0]
+            Logger.debug(f"res.ocr_result.text: {res.ocr_result.text}")
             first_row = cut_roi(copy.deepcopy(cropped_item), (0, 0, w, 26))
             if _contains_color(first_row, "green"):
                 quality = ItemQuality.Set.value

@@ -34,6 +34,7 @@ def get_hovered_item(image: np.ndarray, model = "hover-eng_inconsolata_inv_th_fa
             parsed_item = parse_item(quality, res.ocr_result.text)
         except Exception as e:
             Logger.warning(f"\nparsed_item ERROR {e}\n {traceback.format_exc()}")
+            Logger.debug(f"res.ocr_result.text: {res.ocr_result.text}")
             # * Log the screenshot to log/screenshots/info directory.
             t = time.time()
             cv2.imwrite(f"log/screenshots/info/02_{t}.png", res.img)

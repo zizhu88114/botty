@@ -203,6 +203,10 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
     img = open(inp_img)
     vendor_open = is_visible(ScreenObjects.GoldBtnVendor, inp_img)
     slots = []
+    wait(0.2, 0.3)
+    keyboard.send("enter")
+    wait(0.2, 0.3)
+    keyboard.send("enter")
     # check which slots have items
     for column, row in itertools.product(range(Config().char["num_loot_columns"]), range(4)):
         slot_pos, slot_img = common.get_slot_pos_and_img(img, column, row)
@@ -294,18 +298,26 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
                         is_unidentified = True
                         # recapture box after ID
                         mouse.move(x_m, y_m, randomize = 4, delay_factor = delay)
-                        wait(0.05, 0.1)
+                        wait(0.2, 0.3)
                         hovered_item = grab(True)
                         item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
 
                     if item_box is not None:
                         log_item(item_box, item_properties)
-                        # decide whether to keep item
-                        box.keep, expression = should_keep(item_properties.as_dict())
+                        try:
+                            # decide whether to keep item
+                            box.keep, expression = should_keep(item_properties.as_dict())
+                            is_consumable = consumables.is_consumable(item_properties)
+                        except AttributeError as e:
+                            Logger.info(f"Not keeping {item_name}. Failed with AttributeError {e}")
+                            box.keep = False
+                            expression = ""
+                            is_consumable = False
+
 
                         # make sure it's not a consumable
                         # TODO: logic for trying to add potion to belt if there are needs
-                        box.keep &= not bool(consumables.is_consumable(item_properties))
+                        box.keep &= not bool(is_consumable)
 
                         if box.keep:
                             Logger.info(f"Keep {item_name}. Expression: {expression}")

@@ -120,7 +120,11 @@ class IChar:
             if template_match.valid:
                 Logger.debug(f"Select {template_match.name} ({template_match.score*100:.1f}% confidence)")
                 mouse.move(*template_match.center_monitor)
-                wait(0.2, 0.3)
+                wait(0.5, 0.6)
+                keyboard.send("enter")
+                wait(0.5, 0.6)
+                keyboard.send("enter")
+                wait(0.5, 0.6)
                 mouse.click(button="left")
                 # check the successfunction for 2 sec, if not found, try again
                 check_success_start = time.time()
@@ -204,6 +208,7 @@ class IChar:
             x, y = convert_abs_to_monitor(pos_abs)
             mouse.move(x, y, randomize=5, delay_factor=[factor*0.1, factor*0.14])
             wait(0.012, 0.02)
+            force_move = True
             if force_move:
                 keyboard.send(Config().char["force_move"])
             else:

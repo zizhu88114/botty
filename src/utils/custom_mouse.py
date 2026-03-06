@@ -274,6 +274,7 @@ class mouse:
             if is_in_restricted_inventory_area or is_in_equipped_area:
                 Logger.error("Mouse wants to click in equipped area. Cancel action.")
                 return False
+
         return True
 
     @staticmethod
